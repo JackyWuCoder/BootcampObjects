@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
-    // Start is called before the first frame update
-    void Start()
+    private string nickName;
+    private float speed;
+
+    public void Move()
     {
-        
+        Debug.Log("Player is moving");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Shoot()
     {
-        
+        Debug.Log("Player shoots");
+    }
+
+    public void Die()
+    {
+        Debug.Log("Player died");
     }
 }
