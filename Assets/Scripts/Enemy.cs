@@ -6,5 +6,6 @@ public class Enemy
 {
     private string name;
     private float speed;
+    // Why public?
     public Health health = new Health();
 }
