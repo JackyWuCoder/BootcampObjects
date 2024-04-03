@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet
 {
-    // Start is called before the first frame update
-    void Start()
+    private float speed;
+    private float damage;
+
+    void Move()
     {
-        
+        Debug.Log("Bullet is moving");
     }
 
-    // Update is called once per frame
-    void Update()
+    void Damage()
     {
-        
+        Debug.Log("Damaged something");
     }
 }
