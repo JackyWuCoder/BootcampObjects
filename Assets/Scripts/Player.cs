@@ -6,6 +6,7 @@ public class Player
 {
     private string nickName;
     private float speed;
+    public Health health = new Health();
 
     public void Move()
     {
