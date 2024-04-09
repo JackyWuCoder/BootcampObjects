@@ -6,7 +6,7 @@ public class Enemy
 {
     private string name;
     private float speed;
-    // Why public?
+    // Why public? Why do we instantiate it here?
     public Health health = new Health();
     // Why do we not instantiate the weapon here?
     public Weapon weapon;
