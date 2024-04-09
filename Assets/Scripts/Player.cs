@@ -11,12 +11,12 @@ public class Player
     // Why do we not instantiate the weapon here?
     public Weapon weapon;
 
-    public void Move()
+    public void Move(Vector3 direction)
     {
         Debug.Log("Player is moving");
     }
 
-    public void Shoot()
+    public void Shoot(Vector3 direction, float speed)
     {
         Debug.Log("Player shoots");
     }

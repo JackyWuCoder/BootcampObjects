@@ -7,7 +7,7 @@ public class Bullet
     private float speed;
     private float damage;
 
-    void Move()
+    void Move(Transform target)
     {
         Debug.Log("Bullet is moving");
     }
