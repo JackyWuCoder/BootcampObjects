@@ -17,9 +17,11 @@ public class LevelLoader : MonoBehaviour
         // Create weapon objects
         Weapon gun1 = new Weapon();
         Weapon machineGun = new Weapon();
+        Weapon meleeWeapon = new Weapon("Melee Weapon", 5f);
 
         myPlayer.weapon = gun1;
         shooterEnemy.weapon = machineGun;
+        meleeEnemy.weapon = meleeWeapon;
     }
 
     // Update is called once per frame
