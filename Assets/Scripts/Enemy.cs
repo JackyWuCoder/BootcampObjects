@@ -16,7 +16,7 @@ public class Enemy : PlayableObject
 
     private TestEnum testEnum;
 
-    public override void Move(Transform target) 
+    public override void Move() 
     { 
     
     }
@@ -31,8 +31,13 @@ public class Enemy : PlayableObject
         
     }
 
-    public override void Die(string message)
+    public override void Die()
     {
-        Debug.Log($"Enemy died with a message {message}");
+        Debug.Log($"Enemy died");
+    }
+
+    public virtual void MethodToOverride()
+    {
+        Debug.Log("Method to override in Enemy");
     }
 }
