@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy
+public class Enemy : PlayableObject
 {
     private string name;
     private float speed;
