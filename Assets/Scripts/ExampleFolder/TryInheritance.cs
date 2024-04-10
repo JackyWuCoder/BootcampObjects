@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TryInheritance : RandomCalculations
 {
+    public int newNumber;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,10 @@ public class TryInheritance : RandomCalculations
     void Update()
     {
         
+    }
+
+    public void UseNewNumber()
+    { 
+    
     }
 }

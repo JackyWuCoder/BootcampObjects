@@ -6,10 +6,6 @@ public class Enemy : PlayableObject
 {
     private string name;
     private float speed;
-    // Why public? Why do we instantiate it here?
-    public Health health = new Health();
-    // Why do we not instantiate the weapon here?
-    public Weapon weapon;
 
     private EnemyType enemyType;
 
@@ -20,22 +16,22 @@ public class Enemy : PlayableObject
 
     private TestEnum testEnum;
 
-    public void Move(Transform target) 
+    public override void Move(Transform target) 
     { 
     
     }
 
-    public void Shoot(Vector3 direction, float speed)
+    public override void Shoot(Vector3 direction, float speed)
     { 
     
     }
 
-    public void Attack(float interval)
+    public override void Attack(float interval)
     { 
         
     }
 
-    public void Die(string message)
+    public override void Die(string message)
     {
         Debug.Log($"Enemy died with a message {message}");
     }

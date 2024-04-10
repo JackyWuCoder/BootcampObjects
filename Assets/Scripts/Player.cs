@@ -6,23 +6,19 @@ public class Player : PlayableObject
 {
     private string nickName;
     private float speed;
-    // Why public?
-    public Health health = new Health();
-    // Why do we not instantiate the weapon here?
-    public Weapon weapon;
 
-    public void Move(Vector3 direction)
+    public override void Move()
     {
-        Debug.Log("Player is moving");
+        base.Move();
     }
 
-    public void Shoot(Vector3 direction, float speed)
+    public override void Shoot(Vector3 direction, float speed)
     {
-        Debug.Log("Player shoots");
+        Debug.Log("Player shooting a bullet");
     }
 
-    public void Die()
+    public override void Die()
     {
-        Debug.Log("Player died");
+        base.Die();
     }
 }

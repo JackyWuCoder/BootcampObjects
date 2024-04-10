@@ -8,7 +8,7 @@ public class PlayableObject : MonoBehaviour
     public Health health = new Health();
     // Why do we not instantiate the weapon here?
     public Weapon weapon;
-    public virtual void Move(Transform target)
+    public virtual void Move()
     {
         Debug.Log("Base movement");
     }
