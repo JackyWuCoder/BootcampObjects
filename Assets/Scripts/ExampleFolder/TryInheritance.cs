@@ -7,7 +7,7 @@ public class TryInheritance : RandomCalculations
     // Start is called before the first frame update
     void Start()
     {
-        
+        CalcRandNum();
     }
 
     // Update is called once per frame
