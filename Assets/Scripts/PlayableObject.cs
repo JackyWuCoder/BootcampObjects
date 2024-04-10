@@ -8,23 +8,23 @@ public class PlayableObject : MonoBehaviour
     public Health health = new Health();
     // Why do we not instantiate the weapon here?
     public Weapon weapon;
-    public void Move(Transform target)
+    public virtual void Move(Transform target)
     {
-
+        Debug.Log("Base movement");
     }
 
-    public void Shoot(Vector3 direction, float speed)
+    public virtual void Shoot(Vector3 direction, float speed)
     {
-
+        Debug.Log($"Base is shooting with the speed {speed}");
     }
 
-    public void Attack(float interval)
+    public virtual void Attack(float interval)
     {
-
+        Debug.Log("Base is attacking");
     }
 
-    public void Die(string message)
+    public virtual void Die()
     {
-        Debug.Log($"Enemy died with a message {message}");
+        Debug.Log($"Enemy died");
     }
 }
