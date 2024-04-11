@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
+    [SerializeField] private float attackRange;
+    [SerializeField] private float attackTime = 0;
+    private float timer = 0;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -16,6 +20,24 @@ public class MeleeEnemy : Enemy
         base.Update();
         if (target == null)
             return;
+        if (Vector2.Distance(transform.position, target.position) < attackRange)
+        {
+            // Enemy can Attack
+            Attack(attackTime);
+        }
+    }
+
+    public override void Attack(float interval)
+    {
+        if (timer <= interval)
+        {
+            timer += Time.deltaTime;
+        }
+        else 
+        {
+            timer = 0;
+            target.GetComponent<IDamageable>().GetDamage(0);
+        }
     }
 
     public override void MethodToOverride()
