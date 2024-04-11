@@ -9,13 +9,13 @@ public class PlayerInput : MonoBehaviour
     private Vector2 lookTarget;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         player = GetComponent<Player>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
@@ -26,5 +26,10 @@ public class PlayerInput : MonoBehaviour
         {
             player.Shoot();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        player.Move(new Vector2(horizontal, vertical), lookTarget);
     }
 }
