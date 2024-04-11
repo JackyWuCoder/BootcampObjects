@@ -2,34 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayableObject : MonoBehaviour, IDamageable
+public abstract class PlayableObject : MonoBehaviour, IDamageable
 {
     // Why public? Why do we instantiate it here?
     public Health health = new Health();
     // Why do we not instantiate the weapon here?
     public Weapon weapon;
-    public virtual void Move()
-    {
-        Debug.Log("Base movement");
-    }
 
-    public virtual void Shoot(Vector3 direction, float speed)
-    {
-        Debug.Log($"Base is shooting with the speed {speed}");
-    }
-
-    public virtual void Attack(float interval)
-    {
-        Debug.Log("Base is attacking");
-    }
-
-    public virtual void Die()
-    {
-        Debug.Log($"Enemy died");
-    }
-
-    public void GetDamage(float damage)
-    {
-        throw new System.NotImplementedException();
-    }
+    public abstract void Move(Vector2 direction, Vector2 target);
+    public abstract void Shoot();
+    public abstract void Attack(float interval);
+    public abstract void Die();
+    // Implemented from IDamageable interface
+    public abstract void GetDamage(float damage);
 }
