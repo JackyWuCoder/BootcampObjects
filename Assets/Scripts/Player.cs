@@ -5,11 +5,13 @@ using UnityEngine;
 public class Player : PlayableObject
 {
     private string nickName;
-    private float speed;
+    [SerializeField] private float speed;
+    [SerializeField] Camera cam;
+    Rigidbody2D playerRb;
 
     private void Start()
     {
-        
+        playerRb = GetComponent<Rigidbody2D>();
     }
 
     public override void Shoot()
@@ -29,7 +31,12 @@ public class Player : PlayableObject
 
     public override void Move(Vector2 direction, Vector2 target)
     {
-        throw new System.NotImplementedException();
+        playerRb.velocity = direction * speed * Time.deltaTime;
+        var playerScreenPos = cam.WorldToScreenPoint(transform.position);
+        target.x -= playerScreenPos.x;
+        target.y -= playerScreenPos.y;
+        float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public override void GetDamage(float damage)
