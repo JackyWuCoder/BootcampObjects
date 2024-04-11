@@ -16,24 +16,29 @@ public class Enemy : PlayableObject
 
     private TestEnum testEnum;
 
-    public override void Move() 
-    { 
-    
+    public override void Move(Vector2 direction, Vector2 target)
+    {
+        throw new System.NotImplementedException();
     }
 
-    public override void Shoot(Vector3 direction, float speed)
-    { 
-    
+    public override void Shoot()
+    {
+        throw new System.NotImplementedException();
     }
 
     public override void Attack(float interval)
-    { 
-        
+    {
+        throw new System.NotImplementedException();
     }
 
     public override void Die()
     {
-        Debug.Log($"Enemy died");
+        Debug.Log("Enemy died");
+    }
+
+    public override void GetDamage(float damage)
+    {
+        throw new System.NotImplementedException();
     }
 
     public virtual void MethodToOverride()
