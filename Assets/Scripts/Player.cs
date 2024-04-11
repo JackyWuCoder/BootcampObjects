@@ -31,6 +31,7 @@ public class Player : PlayableObject
 
     public override void Move(Vector2 direction, Vector2 target)
     {
+        //***************************************************************
         playerRb.velocity = direction * speed * Time.deltaTime;
         var playerScreenPos = cam.WorldToScreenPoint(transform.position);
         target.x -= playerScreenPos.x;
