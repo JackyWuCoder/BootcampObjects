@@ -12,6 +12,7 @@ public class MeleeEnemy : Enemy
     protected override void Start()
     {
         base.Start();
+        health = new Health(1, 0, 1);)
     }
 
     // Update is called once per frame
