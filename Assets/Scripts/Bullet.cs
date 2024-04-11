@@ -2,18 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet
+public class Bullet : MonoBehaviour {
 {
-    private float speed;
-    private float damage;
+    [SerializeField] private float speed;
+    [SerializeField] private float damage;
 
-    void Move(Transform target)
+    private void Update()
     {
-        Debug.Log("Bullet is moving");
+        Move();
     }
 
-    void Damage()
+    private void Move()
     {
-        Debug.Log("Damaged something");
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
+    }
+
+    private void Damage(IDamageable damageable)
+    {
+        if (damageable != null)
+        {
+            damageable.GetDamage(damage);
+            Debug.Log("Damaged something");
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log($"Hit {collision.gameObject.name}");
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        Damage(damageable);
     }
 }

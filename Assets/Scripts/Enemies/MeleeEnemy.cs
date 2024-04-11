@@ -12,7 +12,7 @@ public class MeleeEnemy : Enemy
     protected override void Start()
     {
         base.Start();
-        health = new Health(1, 0, 1);)
+        health = new Health(1, 0, 1);
     }
 
     // Update is called once per frame
@@ -39,6 +39,11 @@ public class MeleeEnemy : Enemy
             timer = 0;
             target.GetComponent<IDamageable>().GetDamage(0);
         }
+    }
+
+    public override void GetDamage(float damage)
+    {
+        health.DeductHealth(damage);
     }
 
     public override void MethodToOverride()
