@@ -6,6 +6,7 @@ public class Enemy : PlayableObject
 {
     private string name;
     [SerializeField] protected float speed;
+    protected Transform target;
 
     private EnemyType enemyType;
 
@@ -15,6 +16,23 @@ public class Enemy : PlayableObject
     }
 
     private TestEnum testEnum;
+
+    protected virtual void Start()
+    {
+        target = GameObject.FindWithTag("Player").transform;
+    }
+
+    protected virtual void Update()
+    {
+        if (target != null)
+        {
+            Move(target.position);
+        }
+        else
+        {
+            Move(speed);
+        }
+    }
 
     public override void Move(Vector2 direction, Vector2 target)
     {
