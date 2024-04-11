@@ -42,6 +42,6 @@ public class Player : PlayableObject
 
     public override void GetDamage(float damage)
     {
-        throw new System.NotImplementedException();
+        
     }
 }
