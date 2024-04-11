@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
+    // Start is called before the first frame update
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    // Update is called once per frame
+    protected override void Update()
+    {
+        base.Update();
+        if (target == null)
+            return;
+    }
+
     public override void MethodToOverride()
     {
         Debug.Log("Method overridden in MeleeEnemy");
