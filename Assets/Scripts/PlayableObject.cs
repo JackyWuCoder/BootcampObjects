@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayableObject : MonoBehaviour
+public class PlayableObject : MonoBehaviour, IDamageable
 {
     // Why public? Why do we instantiate it here?
     public Health health = new Health();
@@ -26,5 +26,10 @@ public class PlayableObject : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log($"Enemy died");
+    }
+
+    public void GetDamage(float damage)
+    {
+        throw new System.NotImplementedException();
     }
 }
