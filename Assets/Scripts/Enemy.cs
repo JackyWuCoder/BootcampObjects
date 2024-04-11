@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : PlayableObject
 {
-    private string name;
+    private string enemyName;
     [SerializeField] protected float speed;
     protected Transform target;
 

@@ -15,7 +15,7 @@ public class Health
 
     public Health() { }
 
-    public Health(float currentHealth = 100, float maxHealth, float healthRegenRate)
+    public Health(float maxHealth, float healthRegenRate, float currentHealth = 100)
     {
         this.currentHealth = currentHealth;
         this.maxHealth = maxHealth;
