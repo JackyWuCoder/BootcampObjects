@@ -28,6 +28,9 @@ public class ArrayExample : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameObjectArray[Random.Range(0, gameObjectArray.Length)].GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+        }
     }
 }
