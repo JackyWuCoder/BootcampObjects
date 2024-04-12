@@ -22,8 +22,8 @@ public class ExploderEnemy : Enemy
         Vector2 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
 
         // Check if the enemy is directly above the player within a certain threshold (e.g., 1 unit)
-        return Mathf.Abs(transform.position.x - playerPosition.x) < 1f &&
-               Mathf.Abs(transform.position.y - playerPosition.y) < 1f;
+        return Mathf.Abs(transform.position.x - playerPosition.x) < 0.1f &&
+               Mathf.Abs(transform.position.y - playerPosition.y) < 0.1f;
     }
 
     private void Explode()
