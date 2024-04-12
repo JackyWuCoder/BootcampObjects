@@ -28,6 +28,20 @@ public class ListExamples : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            int index = Random.Range(0, list.Count);
+            if (list[index] != null)
+            {
+                list[index].GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.X) && list.Count > 0)
+        {
+            int index = Random.Range(0, list.Count);
+            Destroy(list[index]);
+            list.RemoveAt(index);
+        }
     }
 }
