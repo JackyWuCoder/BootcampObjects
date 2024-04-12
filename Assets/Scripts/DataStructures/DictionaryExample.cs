@@ -28,6 +28,7 @@ public class DictionaryExample : MonoBehaviour
                 txtTriangle.text = dictionary["Triangles"].ToString();
             }
         }
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             if (dictionary.ContainsKey("Squares"))
@@ -36,6 +37,7 @@ public class DictionaryExample : MonoBehaviour
                 txtSquare.text = dictionary["Squares"].ToString();
             }
         }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (dictionary.ContainsKey("Circles"))
@@ -43,6 +45,14 @@ public class DictionaryExample : MonoBehaviour
                 dictionary["Circles"]++;
                 txtCircle.text = dictionary["Circles"].ToString();
             }
+        }
+
+        // Look up item in a dictionary
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            int val = 0;
+            bool hasKey = dictionary.TryGetValue(checkForKey, out val);
+            Debug.Log(hasKey + " - " + val);
         }
     }
 }
