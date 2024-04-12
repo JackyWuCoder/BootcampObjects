@@ -29,5 +29,25 @@ public class StackExamples : MonoBehaviour
             stack.Push(tempObj);
             Debug.Log($"Pushed {tempObj.name}");
         }
+
+        // Remove element but don't destroy
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log($"Popped from the stack : {stack.Pop().name}");
+        }
+
+        // Remove and destroy the element
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            var remObj = stack.Pop();
+            Destroy(remObj);
+            Debug.Log($"Popped from stack : {remObj}");
+        }
+
+        // Peek the top element of the stack
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log($"Object at the top is : {stack.Peek()}");
+        }
     }
 }
