@@ -10,38 +10,25 @@ public class ExploderEnemy : Enemy
     {
         base.Update();
         // Check if the enemy is directly above the player
-        if (IsAbovePlayer())
+        if (target != null && IsAboveTarget())
         {
             Explode();
         }
     }
 
-    private bool IsAbovePlayer()
+    private bool IsAboveTarget()
     {
-        // Get the player's position
-        Vector2 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-
-        // Check if the enemy is directly above the player within a certain threshold (e.g., 1 unit)
-        return Mathf.Abs(transform.position.x - playerPosition.x) < 0.1f &&
-               Mathf.Abs(transform.position.y - playerPosition.y) < 0.1f;
+        // Check if the exploder enemy is directly above the target within a certain threshold (e.g., 0.1 unit)
+        return Mathf.Abs(transform.position.x - target.position.x) < 0.1f &&
+               Mathf.Abs(transform.position.y - target.position.y) < 0.1f;
     }
 
     private void Explode()
     {
         // Destroy the ExploderEnemy
         Destroy(gameObject);
-        Debug.Log("Exploded on the Player");
-    }
-
-    private void DamagePlayer()
-    {
-        // Find the player GameObject
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-
-        // Get the Player script attached to the player GameObject
-        Player player = playerObject.GetComponent<Player>();
-
-        player.health.DeductHealth(explodeDamage);
+        Debug.Log("Exploded on the Target");
+        target.gameObject.GetComponent<Player>().GetDamage(explodeDamage);
     }
 
     public override void MethodToOverride()

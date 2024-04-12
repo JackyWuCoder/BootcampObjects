@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : PlayableObject
@@ -9,9 +10,27 @@ public class Player : PlayableObject
     [SerializeField] Camera cam;
     Rigidbody2D playerRb;
 
+    private TextMeshProUGUI healthText;
+
     private void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        health = new Health(100f, 0.1f, 100f);
+        healthText = GameObject.Find("/Canvas/PlayerHealth").GetComponent<TextMeshProUGUI>();
+        UpdateHealthText();
+    }
+
+    private void Update()
+    {
+        if (health.GetHealth() == 0)
+        {
+            Die();
+        }
+        else
+        {
+            health.RegenHealth();
+            UpdateHealthText();
+        }
     }
 
     public override void Shoot()
@@ -21,7 +40,7 @@ public class Player : PlayableObject
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        Destroy(gameObject);
     }
 
     public override void Attack(float interval)
@@ -42,6 +61,13 @@ public class Player : PlayableObject
 
     public override void GetDamage(float damage)
     {
-        
+        Debug.Log(health.GetHealth());
+        health.DeductHealth(damage);
+        healthText.text = $"Health : {health.GetHealth()}";
+    }
+
+    private void UpdateHealthText()
+    {
+        healthText.text = $"Health : {health.GetHealth()}";
     }
 }

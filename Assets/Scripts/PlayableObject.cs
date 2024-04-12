@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class PlayableObject : MonoBehaviour, IDamageable
 {
     // Why public? Why do we instantiate it here?
-    public Health health = new Health();
+    public Health health;
     // Why do we not instantiate the weapon here?
     public Weapon weapon;
 

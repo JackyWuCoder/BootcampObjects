@@ -25,12 +25,12 @@ public class Health
     public void AddHealth(float value)
     {
         // Why do we need Mathf.Max here?
-        currentHealth = Mathf.Max(currentHealth, currentHealth + value);
+        currentHealth = Mathf.Min(maxHealth, currentHealth + value);
     }
     // Bugged
     public void DeductHealth(float value)
     {
-        currentHealth = Mathf.Min(0, currentHealth - value);
+        currentHealth = Mathf.Max(0, currentHealth - value);
     }
 
     public void RegenHealth()
