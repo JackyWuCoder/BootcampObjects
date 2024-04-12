@@ -32,5 +32,10 @@ public class ArrayExample : MonoBehaviour
         {
             gameObjectArray[Random.Range(0, gameObjectArray.Length)].GetComponent<SpriteRenderer>().color = Random.ColorHSV();
         }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Destroy(gameObjectArray[Random.Range(0, gameObjectArray.Length)]); ;
+        }
     }
 }
