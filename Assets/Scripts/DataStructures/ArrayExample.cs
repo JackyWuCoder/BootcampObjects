@@ -30,12 +30,21 @@ public class ArrayExample : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            gameObjectArray[Random.Range(0, gameObjectArray.Length)].GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+            int index = Random.Range(0, gameObjectArray.Length);
+            if (gameObjectArray[index] != null)
+            {
+                gameObjectArray[index].GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Destroy(gameObjectArray[Random.Range(0, gameObjectArray.Length)]); ;
+            int index = Random.Range(0, gameObjectArray.Length);
+            while (gameObjectArray[index] == null)
+            {
+                index = Random.Range(0, gameObjectArray.Length);
+            }
+            Destroy(gameObjectArray[index]);
         }
     }
 }
