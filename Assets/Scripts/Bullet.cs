@@ -6,10 +6,12 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float damage;
+    private string targetTag;
 
-    public void SetBullet(float damage, float speed = 10)
+    public void SetBullet(float damage, string targetTag, float speed = 10)
     {
         this.damage = damage;
+        this.targetTag = targetTag;
         this.speed = speed;
     }
 
@@ -35,6 +37,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.gameObject.CompareTag(targetTag))
+            return;
         Debug.Log($"Hit {collision.gameObject.name}");
         IDamageable damageable = collision.GetComponent<IDamageable>();
         Damage(damageable);

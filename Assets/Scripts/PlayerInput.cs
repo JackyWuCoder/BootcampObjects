@@ -22,7 +22,7 @@ public class PlayerInput : MonoBehaviour
         lookTarget = Input.mousePosition;
 
         // index 0 represents the left mouse button
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             player.Shoot();
         }
