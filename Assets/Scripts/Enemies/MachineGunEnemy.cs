@@ -35,7 +35,7 @@ public class MachineGunEnemy : Enemy
 
     public override void Shoot()
     {
-        Debug.Log("MachineGunEnemy is Shooting");
+        //Debug.Log("MachineGunEnemy is Shooting");
     }
 
     public override void MethodToOverride()

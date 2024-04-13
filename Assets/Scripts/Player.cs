@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -8,14 +9,17 @@ public class Player : PlayableObject
     private string nickName;
     [SerializeField] private float speed;
     [SerializeField] Camera cam;
+    [SerializeField] private float weaponDamage = 1;
+    [SerializeField] private float bulletSpeed = 10;
+    [SerializeField] private Bullet bulletPrefab;
     Rigidbody2D playerRb;
-
     private TextMeshProUGUI healthText;
 
     private void Start()
     {
+        health = new Health(100f, 0.5f, 100f);
         playerRb = GetComponent<Rigidbody2D>();
-        health = new Health(100f, 0.1f, 100f);
+        weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         healthText = GameObject.Find("/Canvas/PlayerHealth").GetComponent<TextMeshProUGUI>();
         UpdateHealthText();
     }
@@ -36,10 +40,12 @@ public class Player : PlayableObject
     public override void Shoot()
     {
         Debug.Log("Player shooting a bullet");
+        weapon.Shoot(bulletPrefab, this);
     }
 
     public override void Die()
     {
+        Debug.Log("Player died!");
         Destroy(gameObject);
     }
 

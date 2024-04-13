@@ -7,6 +7,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float damage;
 
+    public void SetBullet(float damage, float speed = 10)
+    {
+        this.damage = damage;
+        this.speed = speed;
+    }
+
     private void Update()
     {
         Move();
