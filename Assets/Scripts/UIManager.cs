@@ -5,7 +5,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text txtHealth, txtScore;
+    [SerializeField] private TMP_Text playerHealthText;
     [SerializeField] private Player player;
 
     // Start is called before the first frame update
@@ -23,6 +23,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealth(float currentHealth)
     {
-        txtHealth.SetText(currentHealth.ToString());
+        playerHealthText.SetText("Health : " + currentHealth.ToString());
     }
 }
