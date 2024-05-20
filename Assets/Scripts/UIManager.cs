@@ -6,6 +6,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text playerHealthText;
+    [SerializeField] private TMP_Text scoreText;
     [SerializeField] private Player player;
 
     // Start is called before the first frame update
