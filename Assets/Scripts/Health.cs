@@ -24,7 +24,6 @@ public class Health
     // Bugged
     public void AddHealth(float value)
     {
-        // Why do we need Mathf.Max here?
         currentHealth = Mathf.Min(maxHealth, currentHealth + value);
     }
     // Bugged

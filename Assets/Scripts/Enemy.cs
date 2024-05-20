@@ -67,11 +67,17 @@ public class Enemy : PlayableObject
     public override void Die()
     {
         Debug.Log("Enemy died");
+        Destroy(gameObject);
     }
 
     public override void GetDamage(float damage)
     {
-        
+        Debug.Log("Enemy damaged");
+        health.DeductHealth(damage);
+        if (health.GetHealth() <= 0)
+        {
+            Die();
+        }
     }
 
     public virtual void MethodToOverride()
