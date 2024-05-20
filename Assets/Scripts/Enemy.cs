@@ -56,12 +56,12 @@ public class Enemy : PlayableObject
 
     public override void Shoot()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void Attack(float interval)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void Die()
@@ -71,7 +71,7 @@ public class Enemy : PlayableObject
 
     public override void GetDamage(float damage)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public virtual void MethodToOverride()
