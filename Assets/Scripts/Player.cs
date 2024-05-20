@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using System;
 
 public class Player : PlayableObject
 {
@@ -12,6 +13,7 @@ public class Player : PlayableObject
     [SerializeField] private float weaponDamage = 1;
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
+    public Action<float> OnHealthUpdate;
     Rigidbody2D playerRb;
     private TextMeshProUGUI healthText;
 
@@ -22,6 +24,7 @@ public class Player : PlayableObject
         weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         healthText = GameObject.Find("/Canvas/PlayerHealth").GetComponent<TextMeshProUGUI>();
         UpdateHealthText();
+        OnHealthUpdate?.Invoke(health.GetHealth());
     }
 
     private void Update()
@@ -69,6 +72,12 @@ public class Player : PlayableObject
     {
         Debug.Log(health.GetHealth());
         health.DeductHealth(damage);
+        OnHealthUpdate?.Invoke(health.GetHealth());
+        if (health.GetHealth() <= 0)
+        {
+            Die();
+        }
+
         healthText.text = $"Health : {health.GetHealth()}";
     }
 
