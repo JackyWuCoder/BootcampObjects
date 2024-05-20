@@ -13,18 +13,18 @@ public class Player : PlayableObject
     [SerializeField] private float weaponDamage = 1;
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
-    public Action<float> OnHealthUpdate;
+    //public Action<float> OnHealthUpdate;
     Rigidbody2D playerRb;
     private TextMeshProUGUI healthText;
 
-    private void Start()
+    private void Awake()
     {
-        health = new Health(100f, 0.5f, 100f);
+        health = new Health(100f, 0.5f, 50f);
         playerRb = GetComponent<Rigidbody2D>();
         weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         healthText = GameObject.Find("/Canvas/PlayerHealth").GetComponent<TextMeshProUGUI>();
         UpdateHealthText();
-        OnHealthUpdate?.Invoke(health.GetHealth());
+        //OnHealthUpdate?.Invoke(health.GetHealth());
     }
 
     private void Update()
@@ -72,7 +72,7 @@ public class Player : PlayableObject
     {
         Debug.Log(health.GetHealth());
         health.DeductHealth(damage);
-        OnHealthUpdate?.Invoke(health.GetHealth());
+        //OnHealthUpdate?.Invoke(health.GetHealth());
         if (health.GetHealth() <= 0)
         {
             Die();

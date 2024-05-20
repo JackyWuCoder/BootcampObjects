@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private static GameManager instance;
 
-    private Player player;
+    [SerializeField] private Player player;
 
     public static GameManager GetInstance()
     {
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindPlayer();
         isEnemySpawning = true;
         StartCoroutine(EnemySpawner());
     }
