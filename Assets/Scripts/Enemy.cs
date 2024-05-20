@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Enemy : PlayableObject
 {
@@ -19,7 +20,16 @@ public class Enemy : PlayableObject
 
     protected virtual void Start()
     {
-        target = GameObject.FindWithTag("Player").transform;
+        try
+        {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log("There is no player in the scene, destroying myself " + e);
+            GameManager.GetInstance().isEnemySpawning = false;
+            // Destroy(gameObject);
+        }
     }
 
     protected virtual void Update()

@@ -50,7 +50,7 @@ public class MeleeEnemy : Enemy
         else 
         {
             timer = 0;
-            target.GetComponent<IDamageable>().GetDamage(0);
+            target.GetComponent<IDamageable>().GetDamage(weapon.GetDamage());
         }
     }
 

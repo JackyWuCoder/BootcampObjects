@@ -26,4 +26,9 @@ public class UIManager : MonoBehaviour
     {
         playerHealthText.SetText("Health : " + currentHealth.ToString());
     }
+
+    public void UpdateScore()
+    {
+        scoreText.SetText(GameManager.GetInstance().scoreManager.GetScore().ToString());
+    }
 }

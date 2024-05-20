@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float enemySpawnRate;
 
     private GameObject tempEnemy;
-    private bool isEnemySpawning;
+    [HideInInspector] public bool isEnemySpawning;
+
+    public ScoreManager scoreManager;
 
     private Weapon meleeWeapon = new Weapon("Melee", 1, 0);
 
