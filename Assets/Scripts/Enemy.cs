@@ -77,6 +77,7 @@ public class Enemy : PlayableObject
     public override void Die()
     {
         Debug.Log("Enemy died");
+        GameManager.GetInstance().NotifyDeath(this);
         Destroy(gameObject);
     }
 
