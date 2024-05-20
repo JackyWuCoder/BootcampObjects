@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private Transform[] spawnPositions;
 
+    [SerializeField] private float enemySpawnRate;
+
     private GameObject tempEnemy;
     private bool isEnemySpawning;
 
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isEnemySpawning = true;
+        StartCoroutine(EnemySpawner());
     }
 
     private void CreateEnemy()
@@ -46,6 +49,15 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
+            CreateEnemy();
+        }
+    }
+
+    IEnumerator EnemySpawner()
+    {
+        while (isEnemySpawning)
+        {
+            yield return new WaitForSeconds(1.0f / enemySpawnRate);
             CreateEnemy();
         }
     }
