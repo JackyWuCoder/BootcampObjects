@@ -85,6 +85,7 @@ public class Enemy : PlayableObject
     {
         Debug.Log("Enemy damaged");
         health.DeductHealth(damage);
+        GameManager.GetInstance().scoreManager.IncrementScore();
         if (health.GetHealth() <= 0)
         {
             Die();

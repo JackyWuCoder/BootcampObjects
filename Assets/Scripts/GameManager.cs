@@ -10,18 +10,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform[] spawnPositions;
 
     [SerializeField] private float enemySpawnRate;
+    [SerializeField] private GameObject playerPrefab;
 
     private GameObject tempEnemy;
+    private bool isPlaying = false;
+
     [HideInInspector] public bool isEnemySpawning;
 
     public ScoreManager scoreManager;
     public PickupSpawner pickupSpawner;
 
+    public Action OnGameStart;
+    public Action OnGameOver;
+
     private Weapon meleeWeapon = new Weapon("Melee", 1, 0);
 
     private static GameManager instance;
 
-    [SerializeField] private Player player;
+    private Player player;
 
     public static GameManager GetInstance()
     {
@@ -38,12 +44,14 @@ public class GameManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
+    /*
     void Start()
     {
         FindPlayer();
         isEnemySpawning = true;
         StartCoroutine(EnemySpawner());
     }
+    */
 
     private void CreateEnemy()
     {
@@ -70,25 +78,62 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NotifyDeath(Enemy enemy)
+    {
+        pickupSpawner.SpawnPickup(enemy.transform.position);
+    }
+
     public Player GetPlayer()
     {
         return player;
     }
 
-    public void FindPlayer()
+    public bool IsPlaying()
     {
-        try
-        {
-            player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        }
-        catch (NullReferenceException e)
-        {
-            Debug.Log("Player not found");
-        }
+        return isPlaying;
     }
 
-    public void NotifyDeath(Enemy enemy)
+    public void StartGame()
     {
-        pickupSpawner.SpawnPickup(enemy.transform.position);
+        player = Instantiate(playerPrefab, Vector2.zero, Quaternion.identity).GetComponent<Player>();
+        player.OnDeath += StopGame;
+        isPlaying = true;
+
+        OnGameStart?.Invoke();
+        StartCoroutine(GameStarter());
+    }
+
+    IEnumerator GameStarter()
+    {
+        yield return new WaitForSeconds(2.0f);
+        isEnemySpawning = true;
+        StartCoroutine(EnemySpawner());
+    }
+
+    public void StopGame()
+    {
+        scoreManager.SetHighScore();
+        StartCoroutine(GameStopper());
+    }
+
+    IEnumerator GameStopper()
+    {
+        isEnemySpawning = false;
+        yield return new WaitForSeconds(2.0f);
+        isPlaying = false;
+
+        // Delete all the enemies
+        foreach (Enemy item in FindObjectsOfType(typeof(Enemy)))
+        {
+            Destroy(item.gameObject);
+        }
+
+        // Delete all pickups
+        foreach (Pickup item in FindObjectsOfType(typeof(Pickup)))
+        {
+            Destroy(item.gameObject);
+        }
+
+        OnGameOver?.Invoke();
     }
 }
