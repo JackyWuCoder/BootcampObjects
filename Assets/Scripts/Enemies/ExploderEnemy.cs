@@ -36,10 +36,4 @@ public class ExploderEnemy : Enemy
         Debug.Log("Exploded on the Target");
         target.gameObject.GetComponent<Player>().GetDamage(explodeDamage);
     }
-
-    // This Method is just for Practice.
-    public override void MethodToOverride()
-    {
-        Debug.Log("Method overridden in ExploderEnemy");
-    }
 }

@@ -336,7 +336,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2158374484434043018, guid: 55b150ef4f52e8b45993c5e51b7067b6, type: 3}
   explodingEnemyPrefab: {fileID: 761090949958700371, guid: ac3b62c4bfefc64408ed54a5aa3a789e, type: 3}
   machineGunEnemyPrefab: {fileID: 4276721400421502315, guid: 08cdf86899193ec449d10b357dd3c1e0, type: 3}
-  shooterEnemyPrefab: {fileID: 0}
+  shooterEnemyPrefab: {fileID: 8955062539204326338, guid: 39130583d55dab34cae1d41c7488f9fe, type: 3}
   spawnPositions:
   - {fileID: 1500480027}
   - {fileID: 1027806723}
@@ -350,7 +350,7 @@ MonoBehaviour:
   - {fileID: 1110458905}
   - {fileID: 685215731}
   - {fileID: 594371734}
-  enemySpawnRate: 1
+  enemySpawnRate: 0.5
   playerPrefab: {fileID: 559153846558730610, guid: 498ab7201d7cdad4291756f495d5cf15, type: 3}
   isEnemySpawning: 0
   scoreManager: {fileID: 423980436}

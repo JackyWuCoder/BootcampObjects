@@ -15,7 +15,7 @@ public class MachineGunEnemy : Enemy
     {
         base.Start();
         health = new Health(1, 0, 1);
-        weapon = new Weapon("MachineGun", 2, 1);
+        // weapon = new Weapon("MachineGun", 2, 1);
     }
 
     protected override void Update()
@@ -45,11 +45,5 @@ public class MachineGunEnemy : Enemy
     public override void Shoot()
     {
         weapon.Shoot(bulletPrefab, this, "Player");
-    }
-
-    // This Method was just for Practice.
-    public override void MethodToOverride()
-    {
-        Debug.Log("Method overridden in MachineGunEnemy");
     }
 }
