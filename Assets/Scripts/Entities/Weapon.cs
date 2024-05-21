@@ -23,7 +23,7 @@ public class Weapon
 
     public void Shoot(Bullet bullet, PlayableObject player, string targetTag, float timeToDie = 5)
     {
-        Debug.Log("Shooting from gun");
+        Debug.Log("Shooting " + targetTag);
         Bullet bulletObj = GameObject.Instantiate(bullet, player.transform.position, player.transform.rotation);
         bulletObj.SetBullet(damage, targetTag,bulletSpeed);
         GameObject.Destroy(bulletObj.gameObject, timeToDie);

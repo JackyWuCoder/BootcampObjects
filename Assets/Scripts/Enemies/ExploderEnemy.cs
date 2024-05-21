@@ -6,6 +6,12 @@ public class ExploderEnemy : Enemy
 {
     private float explodeDamage = 50f;
 
+    protected override void Start()
+    {
+        base.Start();
+        health = new Health(1, 0, 1);
+    }
+
     protected override void Update()
     {
         base.Update();

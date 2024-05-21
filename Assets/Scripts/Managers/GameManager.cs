@@ -62,19 +62,32 @@ public class GameManager : MonoBehaviour
     private void CreateEnemy()
     {
         //int randomNumber = UnityEngine.Random.Range(0, numberOfEnemies);
-        int randomNumber = 0;
-        /*
-        tempEnemy = Instantiate(enemyPrefab);
+        int randomNumber = 1;
+
+
+        /*tempEnemy = Instantiate(enemyPrefab);
         tempEnemy.transform.position = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Length)].position;
         tempEnemy.GetComponent<Enemy>().weapon = meleeWeapon;
-        tempEnemy.GetComponent<MeleeEnemy>().SetMeleeEnemy(2, 0.25f);
-        */
+        tempEnemy.GetComponent<MeleeEnemy>().SetMeleeEnemy(2, 0.25f);*/
 
+        
         // Create exploding enemy
+        /*
         if (randomNumber == 0)
         {
             tempEnemy = Instantiate(explodingEnemyPrefab);
             tempEnemy.transform.position = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Length)].position;
+        }
+        */
+        
+        // Create machinegun enemy
+        if (randomNumber == 1)
+        {
+            tempEnemy = Instantiate(machineGunEnemyPrefab);
+            tempEnemy.transform.position = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Length)].position;
+            Weapon machineGunWeapon = new Weapon("MachineGun", 1, 10);
+            tempEnemy.GetComponent<Enemy>().weapon = machineGunWeapon;
+            tempEnemy.GetComponent<MachineGunEnemy>().Shoot();
         }
 
     }

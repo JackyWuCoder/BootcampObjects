@@ -44,7 +44,6 @@ public class Player : PlayableObject
 
     public override void Shoot()
     {
-        Debug.Log("Player shooting a bullet");
         weapon.Shoot(bulletPrefab, this, "Enemy");
     }
 
