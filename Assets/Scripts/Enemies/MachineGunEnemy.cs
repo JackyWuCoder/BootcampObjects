@@ -5,9 +5,9 @@ using UnityEngine;
 public class MachineGunEnemy : Enemy
 {
     [SerializeField] private Bullet bulletPrefab;
-    [SerializeField] private float attackRangeX = 3f;
-    [SerializeField] private float attackRangeY = 3f;
-    [SerializeField] private float fireCooldown = 100f; // Adjusts fire rate
+    [SerializeField] private float attackRangeX = 5f;
+    [SerializeField] private float attackRangeY = 5f;
+    [SerializeField] private float fireCooldown = 0.5f; // Adjusts fire rate
 
     private float lastFireTime;
 
@@ -15,7 +15,7 @@ public class MachineGunEnemy : Enemy
     {
         base.Start();
         health = new Health(1, 0, 1);
-        weapon = new Weapon("MachineGun", 2, 5);
+        weapon = new Weapon("MachineGun", 2, 1);
     }
 
     protected override void Update()

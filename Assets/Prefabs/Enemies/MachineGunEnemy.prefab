@@ -101,9 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   bulletPrefab: {fileID: 4592545937212020492, guid: 632fd2da681c47948a2cada9bc89b4ed, type: 3}
-  attackRangeX: 3
-  attackRangeY: 3
-  fireCooldown: 1
+  attackRangeX: 5
+  attackRangeY: 5
+  fireCooldown: 0.5
 --- !u!50 &-8775553831720703165
 Rigidbody2D:
   serializedVersion: 4
