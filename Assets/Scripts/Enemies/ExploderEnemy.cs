@@ -31,6 +31,7 @@ public class ExploderEnemy : Enemy
         target.gameObject.GetComponent<Player>().GetDamage(explodeDamage);
     }
 
+    // This Method is just for Practice.
     public override void MethodToOverride()
     {
         Debug.Log("Method overridden in ExploderEnemy");

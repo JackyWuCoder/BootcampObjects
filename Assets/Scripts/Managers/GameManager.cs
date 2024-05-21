@@ -7,6 +7,12 @@ using static UnityEngine.GraphicsBuffer;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject explodingEnemyPrefab;
+    [SerializeField] private GameObject machineGunEnemyPrefab;
+    [SerializeField] private GameObject shooterEnemyPrefab;
+
+    private int numberOfEnemies = 3;
+
     [SerializeField] private Transform[] spawnPositions;
 
     [SerializeField] private float enemySpawnRate;
@@ -55,10 +61,22 @@ public class GameManager : MonoBehaviour
 
     private void CreateEnemy()
     {
+        //int randomNumber = UnityEngine.Random.Range(0, numberOfEnemies);
+        int randomNumber = 0;
+        /*
         tempEnemy = Instantiate(enemyPrefab);
         tempEnemy.transform.position = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Length)].position;
         tempEnemy.GetComponent<Enemy>().weapon = meleeWeapon;
         tempEnemy.GetComponent<MeleeEnemy>().SetMeleeEnemy(2, 0.25f);
+        */
+
+        // Create exploding enemy
+        if (randomNumber == 0)
+        {
+            tempEnemy = Instantiate(explodingEnemyPrefab);
+            tempEnemy.transform.position = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Length)].position;
+        }
+
     }
 
     private void Update()
